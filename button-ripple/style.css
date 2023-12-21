@@ -1,0 +1,47 @@
+body{
+   margin: 0;
+   height: 100vh;
+   display: flex;
+   text-align: center;
+   align-items: center;
+   justify-content: center;
+}
+
+.button{
+    color: black;
+    padding: 20px 40px;
+    margin: 10px;
+    border-radius: 10px;
+    font-size: 20px;
+    box-shadow: 0 5px 8px rgb(0,0,0, .4);
+    border: none;
+    background-color: pink;
+    overflow: hidden; /*prevent hover effect bigger than the button*/
+    position: relative; /*relative to itself, no other element impacted --> set hover effect within th button*/
+}
+
+.button span{
+    position: relative;
+    z-index: 1; /*defines order of overlapping html elements*/
+}
+
+.button::before{
+    content:"";
+    position: absolute;
+    background-color: orangered;
+    width: 0px; /*set width and height to 0 so we don't see the hover first*/
+    height: 0px;
+    left: var(--xPos);/*define x var as xPos and call in js*/
+    /*50%; bring to center*/
+    top: var(--yPos);/*define y var as yPos and call in js*/
+    /*50%;bring to center*/
+    transform: translate(-50%,-50%); /*bring to center*/
+    border-radius: 50%; /*form into a cirle*/
+    transition: width 0.5s, height 0.5s;
+}
+
+.button:hover::before{ /*if hover over the button - the effect*/ 
+    width: 300px;
+    height:300px;
+
+}
